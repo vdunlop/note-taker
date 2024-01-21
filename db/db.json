@@ -22,5 +22,13 @@
     {
         "title": "Garage",
         "text": "clean garage in summer"
+    },
+    {
+        "title": "Another note",
+        "text": "and another note"
+    },
+    {
+        "title": "basement",
+        "text": "clean the basement"
     }
 ]

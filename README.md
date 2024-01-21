@@ -43,24 +43,26 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Installation-Execution
 
-Open a command terminal, go to the SVG-logo-maker folder and execute index.js using the command "node index.js".
+Open a command terminal, go to the note-taker folder and execute server.js using the command "node server.js". This will start your server.
 
-You will be prompted to enter the following information:
+Open a browser and type localhost:3001.
 
-1. Logo text of up to 3 digits
+The browser will open the main screen for Note Taker. Click on <Get Started>.
 
-2. Color of the logo text using color keyword or a '#' started hexadecimal number representing a color
+Once you are in the notes list screen, you can do the following:
 
-3. Shape - choose from Circle, Triangle and Square
+1. Type in a Note Title and Note Text and click <Save Note> to create a note.
 
-4. Color of the shape that the text will be on
+2. Type in a Note Title and Note Text and click on <Clear> to clear out what you've typed.
+
+3. Click on an existing note to have it show on the right side screen with details.
 
 ## Usage
 
-The SVG Logo Maker can be used to create simple logos (300 x 200) of format SVG. The logo will be stored in an examples folder named logo.svg. You may change the name or move it to prevent it from being overwritten when the next logo is created.
+The Note Taker app can be used to keep track of your to do list. You can add your to-do item (like washing the car) along with a title. Your items with their titles will be saved in a local file on your computer, so that if you exit out of the app and then go back in, your list will still be accurate.
 
 ## Testing
-The SVG Logo Maker was tested using "jest". To run the tests, go to the SVG-logo-maker folder and execute "npm run test". You will need to install npm and/or jest if not already installed.
+N/A
 
 ## Credits
 N/A

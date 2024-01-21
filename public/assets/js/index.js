@@ -63,12 +63,17 @@ const renderActiveNote = () => {
     noteText.setAttribute("readonly", true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
+    console.log(activeNote.id);
+    console.log("activenoteid true");
   } else {
     hide(newNoteBtn);
     noteTitle.removeAttribute("readonly");
     noteText.removeAttribute("readonly");
     noteTitle.value = "";
     noteText.value = "";
+    console.log(activeNote.id);
+    console.log("activenoteid false");
+
   }
 };
 
@@ -105,6 +110,7 @@ const handleNoteDelete = (e) => {
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute("data-note"));
+  console.log("in handle note view");
   renderActiveNote();
 };
 

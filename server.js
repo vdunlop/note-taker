@@ -70,6 +70,11 @@ app.post("/api/notes", async (req, res) => {
   return res.status(200).json("Note saved successfully");
 });
 
+// DELETE: delete the note with id of :id
+app.delete("/api/notes/:id", (req, res) => {
+
+});
+
 // GET: catchall - send index.html
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "public/index.html"))
