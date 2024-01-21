@@ -42,9 +42,7 @@ app.get('/api/notes', async (req, res) => {
 app.post('/api/notes', async (req, res) => {
   // Destructure the data that was sent from the client
   const { title, text } = req.body;
-  console.log(title);
-  console.log(text);
-
+ 
   // If nothing was passed in then send error and return
   if (!req.body) {
     return res.status(400).json('Missing body information');
