@@ -8,7 +8,6 @@ const notesFile = "./db/db.json";
 
 // Helper method to generate unique/random ids
 const uuid = require("./Helpers/uuid");
-//const fsUtil = require("./Helpers/fsUtils");
 
 // Helper functions for reading and writing to the JSON file
 const {
@@ -23,7 +22,7 @@ const PORT = process.env.PORT || 3001;
 // Set up app for express/routing.
 const app = express();
 
-// Set up to receive json and url encoded data
+// Set up parsers to receive json and url encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
