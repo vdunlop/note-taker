@@ -13,5 +13,15 @@
         "title": "Ironing",
         "text": "no ironing",
         "id": "id"
+    },
+    {
+        "title": "Garage",
+        "text": "clean yearly",
+        "id": "28fd"
+    },
+    {
+        "title": "basement",
+        "text": "clean out some day",
+        "id": "417f"
     }
 ]

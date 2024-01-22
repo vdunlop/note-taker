@@ -31,20 +31,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // GET: /notes - send notes.html
-app.get('/notes', (req, res) =>
+app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "public/notes.html"))
 );
 
 // GET: /api/notes - request from client for "us" to send it all notes
-app.get('/api/notes', async (req, res) => {
-
+app.get("/api/notes", async (req, res) => {
   const notes = await readFromFile(notesFile);
   const parsedNotes = JSON.parse(notes);
   res.json(parsedNotes);
 });
 
 // POST: /api/notes - a request from the client was made to save the note that the client sent (in body)
-app.post('/api/notes', async (req, res) => {
+app.post("/api/notes", async (req, res) => {
   // Destructure the data that was sent from the client
   const { title, text } = req.body;
 
@@ -56,16 +55,14 @@ app.post('/api/notes', async (req, res) => {
   // Get existing data from current notes file.
   const currentNotes = await readFromFile(notesFile);
   const parsedCurrentNotes = JSON.parse(currentNotes);
-  console.log(parsedCurrentNotes);
 
   // Add new data to the current notes file.
   const newNote = {
     title,
     text,
-    id:uuid()
+    id: uuid(),
   };
   parsedCurrentNotes.push(newNote);
-  console.log(parsedCurrentNotes);
 
   // write new + existing data to file
   writeToFile(notesFile, parsedCurrentNotes);
@@ -73,14 +70,13 @@ app.post('/api/notes', async (req, res) => {
 });
 
 // DELETE: delete the note with id of :id
-app.delete('/api/notes/:id', (req, res) => {
-    return res.status(200).json("Note deleted successfully");
+app.delete("/api/notes/:id", (req, res) => {
+  return res.status(200).json("Note deleted successfully");
 });
 
 // GET: catchall - send index.html
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "public/index.html"))
-
 );
 
 app.listen(PORT, () =>
