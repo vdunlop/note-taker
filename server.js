@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs/promises");
 //const fs = require("fs");
-//const noteData = require("./db/db.json");
+const noteData = require("./db/db.json");
 const notesFile = "./db/db.json";
 
 // Helper method to generate unique/random ids
@@ -18,7 +18,7 @@ const {
 } = require("./Helpers/fsUtils");
 
 // Client port.
-const PORT = 3001 || process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 // Set up app for express/routing.
 const app = express();
@@ -31,24 +31,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // GET: /notes - send notes.html
-app.get("/notes", (req, res) =>
+app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, "public/notes.html"))
 );
 
 // GET: /api/notes - request from client for "us" to send it all notes
-app.get("/api/notes", async (req, res) => {
+app.get('/api/notes', async (req, res) => {
+
   const notes = await readFromFile(notesFile);
   const parsedNotes = JSON.parse(notes);
   res.json(parsedNotes);
 });
 
-// POST: /api/notes - request from client to save the note that was sent by the client
-app.post("/api/notes", async (req, res) => {
+// POST: /api/notes - a request from the client was made to save the note that the client sent (in body)
+app.post('/api/notes', async (req, res) => {
   // Destructure the data that was sent from the client
   const { title, text } = req.body;
 
   // If nothing was passed in then send error and return
-  if (!req.body) {
+  if (!(title && text)) {
     return res.status(400).json("Missing body information");
   }
 
@@ -61,6 +62,7 @@ app.post("/api/notes", async (req, res) => {
   const newNote = {
     title,
     text,
+    id:uuid()
   };
   parsedCurrentNotes.push(newNote);
   console.log(parsedCurrentNotes);
@@ -71,13 +73,14 @@ app.post("/api/notes", async (req, res) => {
 });
 
 // DELETE: delete the note with id of :id
-app.delete("/api/notes/:id", (req, res) => {
-
+app.delete('/api/notes/:id', (req, res) => {
+    return res.status(200).json("Note deleted successfully");
 });
 
 // GET: catchall - send index.html
 app.get("*", (req, res) =>
   res.sendFile(path.join(__dirname, "public/index.html"))
+
 );
 
 app.listen(PORT, () =>

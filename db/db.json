@@ -1,34 +1,17 @@
 [
     {
         "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "Dishes",
-        "text": "do every day"
+        "text": "Test text",
+        "id": "uab"
     },
     {
         "title": "Laundry",
-        "text": "do on tuesdays."
+        "text": "do laundry on wed",
+        "id": "0"
     },
     {
-        "title": ";lkj;lkj",
-        "text": "fjfjfjfjffj"
-    },
-    {
-        "title": "Wash windows",
-        "text": "summertime"
-    },
-    {
-        "title": "Garage",
-        "text": "clean garage in summer"
-    },
-    {
-        "title": "Another note",
-        "text": "and another note"
-    },
-    {
-        "title": "basement",
-        "text": "clean the basement"
+        "title": "Ironing",
+        "text": "no ironing",
+        "id": "id"
     }
 ]
