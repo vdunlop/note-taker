@@ -39,7 +39,15 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ### Mock-Up
 
-![Alt text](./examples/logo-project10.jpg)
+Note Taker get started page
+![note taker start page](./Assets/note-taker-start.jpg)
+
+Note Taker new note example
+![note taker main page](./Assets/note-taker-new.jpg)
+
+Note Taker save note example
+![note taker save page](./Assets/note-taker-save.jpg)
+
 
 ## Installation-Execution
 
@@ -55,11 +63,13 @@ Once you are in the notes list screen, you can do the following:
 
 2. Type in a Note Title and Note Text and click on <Clear> to clear out what you've typed.
 
-3. Click on an existing note to have it show on the right side screen with details.
+3. Click on an existing note to have it show on the right side screen with details. You will also see the <New Note> button appear.
+
+4. Click on the "delete" symbol next to any note and it will be deleted and the left side list will be updated.
 
 ## Usage
 
-The Note Taker app can be used to keep track of your to do list. You can add your to-do item (like washing the car) along with a title. Your items with their titles will be saved in a local file on your computer, so that if you exit out of the app and then go back in, your list will still be accurate.
+The Note Taker app can be used to keep track of your to do list. You can add your to-do item (like washing the car) along with a title. You can also delete items off of your list as you complete them. Your items with their titles will be saved in a local file on your computer, so that if you exit out of the app and then go back in, your list will still be accurate.
 
 ## Testing
 N/A
