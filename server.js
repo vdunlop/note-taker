@@ -1,9 +1,9 @@
 // Set up requires for express and file system use.
 const express = require("express");
 const path = require("path");
-const fs = require("fs/promises");
+//const fs = require("fs/promises");
 //const fs = require("fs");
-const noteData = require("./db/db.json");
+//const noteData = require("./db/db.json");
 const notesFile = "./db/db.json";
 
 // Helper method to generate unique/random ids
@@ -69,8 +69,41 @@ app.post("/api/notes", async (req, res) => {
 });
 
 // DELETE: delete the note with id of :id
-app.delete("/api/notes/:id", (req, res) => {
-  return res.status(200).json("Note deleted successfully");
+app.delete("/api/notes/:id", async (req, res) => {
+
+  // Get the id for the record to be deleted.
+  const deleteId = req.params.id.toLowerCase();
+
+   // Destructure the data that was sent from the client
+   const { title, text } = req.body;
+
+   // If nothing was passed in then send error and return
+   if (!(deleteId)) {
+     return res.status(400).json("Missing record id");
+   }
+ 
+   // Get existing data from current notes file.
+   const currentNotes = await readFromFile(notesFile);
+   const parsedCurrentNotes = JSON.parse(currentNotes);
+ console.log(parsedCurrentNotes);
+ const newCurrentNotes = [];
+ let found = 0; // tracks whether the id passed in to delete is found
+ 
+ // Iterate through current notes to find the one that needs to be deleted.
+ // Push non-deleted note to the newCurrentNotes.
+ for (let i=0; i < parsedCurrentNotes.length; i++) {
+    if (deleteId === parsedCurrentNotes[i].id.toLowerCase()) {
+    // skip this one
+    found++;
+ } else {
+    newCurrentNotes.push(parsedCurrentNotes[i]);
+    console.log(newCurrentNotes);
+ }
+}
+if (!found) return res.status(400).json(`${deleteId} not found`);
+   // write new + existing data to file
+   writeToFile(notesFile, newCurrentNotes);
+   return res.status(200).json("Note deleted successfully");
 });
 
 // GET: catchall - send index.html
